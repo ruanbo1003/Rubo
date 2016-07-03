@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?fileVersion 4.0.0?><cproject storage_type_id="org.eclipse.cdt.core.XmlProjectDescriptionStorage">
+	<storageModule moduleId="org.eclipse.cdt.core.settings">
+		<cconfiguration id="cdt.managedbuild.config.gnu.exe.debug.1579296244">
+			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="cdt.managedbuild.config.gnu.exe.debug.1579296244" moduleId="org.eclipse.cdt.core.settings" name="Debug">
+				<externalSettings/>
+				<extensions>
+					<extension id="org.eclipse.cdt.core.ELF" point="org.eclipse.cdt.core.BinaryParser"/>
+					<extension id="org.eclipse.cdt.core.GASErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GmakeErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GLDErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.CWDLocator" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GCCErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+				</extensions>
+			</storageModule>
+			<storageModule moduleId="cdtBuildSystem" version="4.0.0">
+				<configuration artifactName="${ProjName}" buildArtefactType="org.eclipse.cdt.build.core.buildArtefactType.exe" buildProperties="org.eclipse.cdt.build.core.buildArtefactType=org.eclipse.cdt.build.core.buildArtefactType.exe,org.eclipse.cdt.build.core.buildType=org.eclipse.cdt.build.core.buildType.debug" cleanCommand="rm -rf" description="" id="cdt.managedbuild.config.gnu.exe.debug.1579296244" name="Debug" parent="cdt.managedbuild.config.gnu.exe.debug">
+					<folderInfo id="cdt.managedbuild.config.gnu.exe.debug.1579296244." name="/" resourcePath="">
+						<toolChain id="cdt.managedbuild.toolchain.gnu.exe.debug.1142685869" name="Linux GCC" superClass="cdt.managedbuild.toolchain.gnu.exe.debug">
+							<targetPlatform id="cdt.managedbuild.target.gnu.platform.exe.debug.383560205" name="Debug Platform" superClass="cdt.managedbuild.target.gnu.platform.exe.debug"/>
+							<builder buildPath="${workspace_loc:/ImServer}/Debug" id="cdt.managedbuild.target.gnu.builder.exe.debug.1477657850" keepEnvironmentInBuildfile="false" managedBuildOn="true" name="Gnu Make Builder" superClass="cdt.managedbuild.target.gnu.builder.exe.debug">
+								<outputEntries>
+									<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="outputPath" name="Debug"/>
+									<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="outputPath" name="Release"/>
+								</outputEntries>
+							</builder>
+							<tool id="cdt.managedbuild.tool.gnu.archiver.base.119475508" name="GCC Archiver" superClass="cdt.managedbuild.tool.gnu.archiver.base"/>
+							<tool command="g++ -std=gnu++11" commandLinePattern="${COMMAND} ${FLAGS} ${OUTPUT_FLAG} ${OUTPUT_PREFIX}${OUTPUT} ${INPUTS}" id="cdt.managedbuild.tool.gnu.cpp.compiler.exe.debug.1197781438" name="GCC C++ Compiler" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.exe.debug">
+								<option id="gnu.cpp.compiler.exe.debug.option.optimization.level.580574760" name="Optimization Level" superClass="gnu.cpp.compiler.exe.debug.option.optimization.level" value="gnu.cpp.compiler.optimization.level.none" valueType="enumerated"/>
+								<option id="gnu.cpp.compiler.exe.debug.option.debugging.level.1415604981" name="Debug Level" superClass="gnu.cpp.compiler.exe.debug.option.debugging.level" value="gnu.cpp.compiler.debugging.level.max" valueType="enumerated"/>
+								<option id="gnu.cpp.compiler.option.include.paths.679179810" name="Include paths (-I)" superClass="gnu.cpp.compiler.option.include.paths" valueType="includePath">
+									<listOptionValue builtIn="false" value="/home/ruanbo/Codes/ImServer/"/>
+									<listOptionValue builtIn="false" value="/home/ruanbo/Codes/RuboServer"/>
+									<listOptionValue builtIn="false" value="/usr/local/include/c++/5.2.0"/>
+									<listOptionValue builtIn="false" value="/usr/local/include/c++/5.2.0/x86_64-unknown-linux-gnu"/>
+									<listOptionValue builtIn="false" value="/usr/local/include/c++/5.2.0/backward"/>
+									<listOptionValue builtIn="false" value="/home/ruanbo/Codes/ImServer/ImServer/ImServer"/>
+									<listOptionValue builtIn="false" value="/usr/include/mysql"/>
+									<listOptionValue builtIn="false" value="/usr/local/protobuf/include"/>
+								</option>
+								<option id="gnu.cpp.compiler.option.dialect.std.141510205" name="Language standard" superClass="gnu.cpp.compiler.option.dialect.std" value="gnu.cpp.compiler.dialect.default" valueType="enumerated"/>
+								<option id="gnu.cpp.compiler.option.other.other.302090722" name="Other flags" superClass="gnu.cpp.compiler.option.other.other" value="-c -fmessage-length=0" valueType="string"/>
+								<option id="gnu.cpp.compiler.option.preprocessor.def.850745031" name="Defined symbols (-D)" superClass="gnu.cpp.compiler.option.preprocessor.def" valueType="definedSymbols">
+									<listOptionValue builtIn="false" value="DEBUG_MODE=1"/>
+								</option>
+								<inputType id="cdt.managedbuild.tool.gnu.cpp.compiler.input.394876616" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.input"/>
+							</tool>
+							<tool command="gcc -std=gnu++11" id="cdt.managedbuild.tool.gnu.c.compiler.exe.debug.1272247283" name="GCC C Compiler" superClass="cdt.managedbuild.tool.gnu.c.compiler.exe.debug">
+								<option defaultValue="gnu.c.optimization.level.none" id="gnu.c.compiler.exe.debug.option.optimization.level.1564914344" name="Optimization Level" superClass="gnu.c.compiler.exe.debug.option.optimization.level" valueType="enumerated"/>
+								<option id="gnu.c.compiler.exe.debug.option.debugging.level.1666371007" name="Debug Level" superClass="gnu.c.compiler.exe.debug.option.debugging.level" value="gnu.c.debugging.level.max" valueType="enumerated"/>
+								<option id="gnu.c.compiler.option.dialect.std.461186890" name="Language standard" superClass="gnu.c.compiler.option.dialect.std" value="gnu.c.compiler.dialect.default" valueType="enumerated"/>
+								<option id="gnu.c.compiler.option.include.paths.1715418127" name="Include paths (-I)" superClass="gnu.c.compiler.option.include.paths" valueType="includePath">
+									<listOptionValue builtIn="false" value="/home/ruanbo/Codes/ImServer/"/>
+									<listOptionValue builtIn="false" value="/home/ruanbo/Codes/ImServer"/>
+									<listOptionValue builtIn="false" value="/usr/local/include/c++/5.2.0"/>
+									<listOptionValue builtIn="false" value="/usr/local/include/c++/5.2.0/x86_64-unknown-linux-gnu"/>
+									<listOptionValue builtIn="false" value="/usr/local/include/c++/5.2.0/backward"/>
+									<listOptionValue builtIn="false" value="/home/ruanbo/Codes/ImServer/ImServer/ImServer"/>
+									<listOptionValue builtIn="false" value="/usr/include/mysql"/>
+									<listOptionValue builtIn="false" value="/usr/local/protobuf/include"/>
+								</option>
+								<option id="gnu.c.compiler.option.preprocessor.def.symbols.1438818381" name="Defined symbols (-D)" superClass="gnu.c.compiler.option.preprocessor.def.symbols" valueType="definedSymbols">
+									<listOptionValue builtIn="false" value="DEBUG_MODE=1"/>
+								</option>
+								<inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.1941039239" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
+							</tool>
+							<tool id="cdt.managedbuild.tool.gnu.c.linker.exe.debug.504101333" name="GCC C Linker" superClass="cdt.managedbuild.tool.gnu.c.linker.exe.debug"/>
+							<tool id="cdt.managedbuild.tool.gnu.cpp.linker.exe.debug.1609701784" name="GCC C++ Linker" superClass="cdt.managedbuild.tool.gnu.cpp.linker.exe.debug">
+								<option id="gnu.cpp.link.option.libs.882030421" name="Libraries (-l)" superClass="gnu.cpp.link.option.libs" valueType="libs">
+									<listOptionValue builtIn="false" value="pthread"/>
+									<listOptionValue builtIn="false" value="ssl"/>
+									<listOptionValue builtIn="false" value="mysqlcppconn"/>
+									<listOptionValue builtIn="false" value="protobuf"/>
+									<listOptionValue builtIn="false" value="crypto"/>
+									<listOptionValue builtIn="false" value="hiredis"/>
+								</option>
+								<option id="gnu.cpp.link.option.paths.1782690971" name="Library search path (-L)" superClass="gnu.cpp.link.option.paths" valueType="libPaths">
+									<listOptionValue builtIn="false" value="/usr/local/protobuf/lib/"/>
+								</option>
+								<inputType id="cdt.managedbuild.tool.gnu.cpp.linker.input.1329909778" superClass="cdt.managedbuild.tool.gnu.cpp.linker.input">
+									<additionalInput kind="additionalinputdependency" paths="$(USER_OBJS)"/>
+									<additionalInput kind="additionalinput" paths="$(LIBS)"/>
+								</inputType>
+							</tool>
+							<tool id="cdt.managedbuild.tool.gnu.assembler.exe.debug.1578642478" name="GCC Assembler" superClass="cdt.managedbuild.tool.gnu.assembler.exe.debug">
+								<option id="gnu.both.asm.option.include.paths.1711674118" name="Include paths (-I)" superClass="gnu.both.asm.option.include.paths" valueType="includePath">
+									<listOptionValue builtIn="false" value="/home/ruanbo/Codes/ImServer/"/>
+									<listOptionValue builtIn="false" value="/home/ruanbo/Codes/ImServer"/>
+									<listOptionValue builtIn="false" value="/usr/local/include/c++/5.2.0"/>
+									<listOptionValue builtIn="false" value="/usr/local/include/c++/5.2.0/x86_64-unknown-linux-gnu"/>
+									<listOptionValue builtIn="false" value="/usr/local/include/c++/5.2.0/backward"/>
+									<listOptionValue builtIn="false" value="/home/ruanbo/Codes/ImServer/ImServer/ImServer"/>
+									<listOptionValue builtIn="false" value="/usr/include/mysql"/>
+									<listOptionValue builtIn="false" value="/usr/local/protobuf/include"/>
+								</option>
+								<inputType id="cdt.managedbuild.tool.gnu.assembler.input.1352606232" superClass="cdt.managedbuild.tool.gnu.assembler.input"/>
+							</tool>
+						</toolChain>
+					</folderInfo>
+					<sourceEntries>
+						<entry excluding="DB|protocols|msgs|Gate" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
+						<entry excluding="protocols" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="msgs"/>
+						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="msgs/protocols"/>
+					</sourceEntries>
+				</configuration>
+			</storageModule>
+			<storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
+		</cconfiguration>
+		<cconfiguration id="cdt.managedbuild.config.gnu.exe.release.1209736491">
+			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="cdt.managedbuild.config.gnu.exe.release.1209736491" moduleId="org.eclipse.cdt.core.settings" name="Release">
+				<externalSettings/>
+				<extensions>
+					<extension id="org.eclipse.cdt.core.ELF" point="org.eclipse.cdt.core.BinaryParser"/>
+					<extension id="org.eclipse.cdt.core.GASErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GmakeErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GLDErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.CWDLocator" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GCCErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+				</extensions>
+			</storageModule>
+			<storageModule moduleId="cdtBuildSystem" version="4.0.0">
+				<configuration artifactName="${ProjName}" buildArtefactType="org.eclipse.cdt.build.core.buildArtefactType.exe" buildProperties="org.eclipse.cdt.build.core.buildArtefactType=org.eclipse.cdt.build.core.buildArtefactType.exe,org.eclipse.cdt.build.core.buildType=org.eclipse.cdt.build.core.buildType.release" cleanCommand="rm -rf" description="" id="cdt.managedbuild.config.gnu.exe.release.1209736491" name="Release" parent="cdt.managedbuild.config.gnu.exe.release">
+					<folderInfo id="cdt.managedbuild.config.gnu.exe.release.1209736491." name="/" resourcePath="">
+						<toolChain id="cdt.managedbuild.toolchain.gnu.exe.release.493715083" name="Linux GCC" superClass="cdt.managedbuild.toolchain.gnu.exe.release">
+							<targetPlatform id="cdt.managedbuild.target.gnu.platform.exe.release.1555190201" name="Debug Platform" superClass="cdt.managedbuild.target.gnu.platform.exe.release"/>
+							<builder buildPath="${workspace_loc:/ImServer}/Release" id="cdt.managedbuild.target.gnu.builder.exe.release.38152239" keepEnvironmentInBuildfile="false" managedBuildOn="true" name="Gnu Make Builder" superClass="cdt.managedbuild.target.gnu.builder.exe.release"/>
+							<tool id="cdt.managedbuild.tool.gnu.archiver.base.607896237" name="GCC Archiver" superClass="cdt.managedbuild.tool.gnu.archiver.base"/>
+							<tool id="cdt.managedbuild.tool.gnu.cpp.compiler.exe.release.246220816" name="GCC C++ Compiler" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.exe.release">
+								<option id="gnu.cpp.compiler.exe.release.option.optimization.level.1289002761" name="Optimization Level" superClass="gnu.cpp.compiler.exe.release.option.optimization.level" value="gnu.cpp.compiler.optimization.level.most" valueType="enumerated"/>
+								<option id="gnu.cpp.compiler.exe.release.option.debugging.level.263333774" name="Debug Level" superClass="gnu.cpp.compiler.exe.release.option.debugging.level" value="gnu.cpp.compiler.debugging.level.none" valueType="enumerated"/>
+								<option id="gnu.cpp.compiler.option.include.paths.1551705450" name="Include paths (-I)" superClass="gnu.cpp.compiler.option.include.paths" valueType="includePath">
+									<listOptionValue builtIn="false" value="/home/ruanbo/Codes/ImServer/"/>
+									<listOptionValue builtIn="false" value="/home/ruanbo/Codes/RuboServer"/>
+									<listOptionValue builtIn="false" value="/usr/local/include/c++/5.2.0"/>
+									<listOptionValue builtIn="false" value="/usr/local/include/c++/5.2.0/x86_64-unknown-linux-gnu"/>
+									<listOptionValue builtIn="false" value="/usr/local/include/c++/5.2.0/backward"/>
+									<listOptionValue builtIn="false" value="/home/ruanbo/Codes/ImServer/ImServer/ImServer"/>
+									<listOptionValue builtIn="false" value="/usr/include/mysql"/>
+									<listOptionValue builtIn="false" value="/usr/local/protobuf/include"/>
+								</option>
+								<option id="gnu.cpp.compiler.option.other.other.1338893097" name="Other flags" superClass="gnu.cpp.compiler.option.other.other" value="-c -fmessage-length=0" valueType="string"/>
+								<inputType id="cdt.managedbuild.tool.gnu.cpp.compiler.input.1862364234" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.input"/>
+							</tool>
+							<tool command="gcc -std=c++11" id="cdt.managedbuild.tool.gnu.c.compiler.exe.release.1154280812" name="GCC C Compiler" superClass="cdt.managedbuild.tool.gnu.c.compiler.exe.release">
+								<option defaultValue="gnu.c.optimization.level.most" id="gnu.c.compiler.exe.release.option.optimization.level.1274674204" name="Optimization Level" superClass="gnu.c.compiler.exe.release.option.optimization.level" valueType="enumerated"/>
+								<option id="gnu.c.compiler.exe.release.option.debugging.level.1723106688" name="Debug Level" superClass="gnu.c.compiler.exe.release.option.debugging.level" value="gnu.c.debugging.level.none" valueType="enumerated"/>
+								<option id="gnu.c.compiler.option.dialect.std.1088030089" name="Language standard" superClass="gnu.c.compiler.option.dialect.std" value="gnu.c.compiler.dialect.default" valueType="enumerated"/>
+								<option id="gnu.c.compiler.option.include.paths.1889250987" name="Include paths (-I)" superClass="gnu.c.compiler.option.include.paths" valueType="includePath">
+									<listOptionValue builtIn="false" value="/home/ruanbo/Codes/ImServer/"/>
+									<listOptionValue builtIn="false" value="/home/ruanbo/Codes/ImServer"/>
+									<listOptionValue builtIn="false" value="/usr/local/include/c++/5.2.0"/>
+									<listOptionValue builtIn="false" value="/usr/local/include/c++/5.2.0/x86_64-unknown-linux-gnu"/>
+									<listOptionValue builtIn="false" value="/usr/local/include/c++/5.2.0/backward"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/ImServer/ImServer}&quot;"/>
+									<listOptionValue builtIn="false" value="/usr/include/mysql"/>
+									<listOptionValue builtIn="false" value="/usr/local/protobuf/include"/>
+								</option>
+								<inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.1098464529" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
+							</tool>
+							<tool id="cdt.managedbuild.tool.gnu.c.linker.exe.release.827709666" name="GCC C Linker" superClass="cdt.managedbuild.tool.gnu.c.linker.exe.release"/>
+							<tool id="cdt.managedbuild.tool.gnu.cpp.linker.exe.release.1289936362" name="GCC C++ Linker" superClass="cdt.managedbuild.tool.gnu.cpp.linker.exe.release">
+								<option id="gnu.cpp.link.option.libs.7104129" name="Libraries (-l)" superClass="gnu.cpp.link.option.libs" valueType="libs">
+									<listOptionValue builtIn="false" value="pthread"/>
+									<listOptionValue builtIn="false" value="ssl"/>
+									<listOptionValue builtIn="false" value="mysqlcppconn"/>
+									<listOptionValue builtIn="false" value="protobuf"/>
+									<listOptionValue builtIn="false" value="crypto"/>
+									<listOptionValue builtIn="false" value="hiredis"/>
+								</option>
+								<option id="gnu.cpp.link.option.paths.1627836952" superClass="gnu.cpp.link.option.paths" valueType="libPaths">
+									<listOptionValue builtIn="false" value="/usr/local/protobuf/lib/"/>
+								</option>
+								<inputType id="cdt.managedbuild.tool.gnu.cpp.linker.input.96160544" superClass="cdt.managedbuild.tool.gnu.cpp.linker.input">
+									<additionalInput kind="additionalinputdependency" paths="$(USER_OBJS)"/>
+									<additionalInput kind="additionalinput" paths="$(LIBS)"/>
+								</inputType>
+							</tool>
+							<tool id="cdt.managedbuild.tool.gnu.assembler.exe.release.1249638806" name="GCC Assembler" superClass="cdt.managedbuild.tool.gnu.assembler.exe.release">
+								<inputType id="cdt.managedbuild.tool.gnu.assembler.input.1028029372" superClass="cdt.managedbuild.tool.gnu.assembler.input"/>
+							</tool>
+						</toolChain>
+					</folderInfo>
+					<sourceEntries>
+						<entry excluding="server/Gate|DB|server/DB|protocols|msgs|server/gate|Gate" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
+						<entry excluding="protocols" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="msgs"/>
+						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="msgs/protocols"/>
+						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="server/DB"/>
+						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="server/Gate"/>
+					</sourceEntries>
+				</configuration>
+			</storageModule>
+			<storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
+		</cconfiguration>
+	</storageModule>
+	<storageModule moduleId="cdtBuildSystem" version="4.0.0">
+		<project id="ImServer.cdt.managedbuild.target.gnu.exe.1219569240" name="Executable" projectType="cdt.managedbuild.target.gnu.exe"/>
+	</storageModule>
+	<storageModule moduleId="scannerConfiguration">
+		<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		<scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.exe.release.1209736491;cdt.managedbuild.config.gnu.exe.release.1209736491.;cdt.managedbuild.tool.gnu.c.compiler.exe.release.1154280812;cdt.managedbuild.tool.gnu.c.compiler.input.1098464529">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		</scannerConfigBuildInfo>
+		<scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.exe.debug.1579296244;cdt.managedbuild.config.gnu.exe.debug.1579296244.;cdt.managedbuild.tool.gnu.c.compiler.exe.debug.1272247283;cdt.managedbuild.tool.gnu.c.compiler.input.1941039239">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		</scannerConfigBuildInfo>
+		<scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.exe.debug.1579296244;cdt.managedbuild.config.gnu.exe.debug.1579296244.;cdt.managedbuild.tool.gnu.cpp.compiler.exe.debug.1197781438;cdt.managedbuild.tool.gnu.cpp.compiler.input.394876616">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		</scannerConfigBuildInfo>
+		<scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.exe.release.1209736491;cdt.managedbuild.config.gnu.exe.release.1209736491.;cdt.managedbuild.tool.gnu.cpp.compiler.exe.release.246220816;cdt.managedbuild.tool.gnu.cpp.compiler.input.1862364234">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		</scannerConfigBuildInfo>
+	</storageModule>
+	<storageModule moduleId="org.eclipse.cdt.core.LanguageSettingsProviders"/>
+	<storageModule moduleId="refreshScope" versionNumber="2">
+		<configuration configurationName="Multiple configurations">
+			<resource resourceType="PROJECT" workspacePath="/ImServer"/>
+		</configuration>
+		<configuration configurationName="Debug">
+			<resource resourceType="PROJECT" workspacePath="/ImServer"/>
+		</configuration>
+		<configuration configurationName="Release">
+			<resource resourceType="PROJECT" workspacePath="/ImServer"/>
+		</configuration>
+	</storageModule>
+	<storageModule moduleId="org.eclipse.cdt.internal.ui.text.commentOwnerProjectMappings"/>
+</cproject>

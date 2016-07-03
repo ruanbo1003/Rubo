@@ -1,0 +1,59 @@
+message LoginReq {
+    required string name = 1;
+    required string passwd = 2;
+};
+
+message RegisterReq {
+	required string name = 1;
+    required string passwd = 2;
+};
+
+message VerifyReq {
+	required string macaddr = 1;
+};
+
+message LoginRsp {
+	required bool isOK = 1;
+	required int32 userId = 2;
+}
+
+message VerifyRsp {
+	required bool isOK = 1;
+}
+
+message RegisterRsp {
+	required bool isOK = 1;
+	required string name = 2;
+	required int32 accid = 3;
+}
+
+// gate -> logic. 有用户连接
+message UserOnlineReq {
+	required int32 uid = 1;
+}
+
+// gate -> logic. 用户离线
+message UserOfflineReq {
+	required int32 uid = 1;
+}
+
+// logic -> gate T用户下线
+message KickUserOutReq {
+	required int32 uid = 1;
+}
+
+message DoSthReq {
+	required int32 uid = 1;
+	required string sth = 2;
+}
+
+message DoSthRsp {
+	required int32 rspID = 1;
+	required string ret = 2;
+}
+
+
+
+
+
+
