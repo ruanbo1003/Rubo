@@ -9,6 +9,7 @@
 #include "tests/tests.hpp"
 #include "comm/Log.hpp"
 #include <string>
+#include "util/Time.hpp"
 
 
 int main(int argc, const char *argv[])
@@ -20,7 +21,6 @@ int main(int argc, const char *argv[])
     }
 
     test_entrys(param);
-
 
     Log(" ==== end of main ==== ");
     return 0;

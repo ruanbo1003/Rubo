@@ -7,9 +7,10 @@
 #ifndef UTIL_TIME_HPP_
 #define UTIL_TIME_HPP_
 
-#include <comm/global.hpp>
-#include <sys/time.h>
-//#include <time.h>
+#include "comm/Log.hpp"
+#include <chrono>
+using namespace std;
+
 
 class Time
 {
@@ -24,20 +25,21 @@ public:
 class DeltaTime
 {
 private:
-    struct timeval _begin;
-    struct timeval _end;
+    long int _begin;
+    long int _end;
 
 public:
     DeltaTime()
     {
-        gettimeofday(&_begin, nullptr);
+        _begin = chrono::duration_cast<chrono::milliseconds>(chrono::system_clock::now().time_since_epoch()).count();
     }
 
     virtual ~DeltaTime()
     {
-        gettimeofday(&_end, nullptr);
+        _end = chrono::duration_cast<chrono::milliseconds>(chrono::system_clock::now().time_since_epoch()).count();
+        auto delta_ms = _end - _begin;
 
-        Log("delta time:%ld.%ldS", (_end.tv_sec-_begin.tv_sec), (_end.tv_usec-_begin.tv_usec)/1000);
+        Log("delta time:%ld.%ld", delta_ms/1000, delta_ms%1000);
     }
 };
 
