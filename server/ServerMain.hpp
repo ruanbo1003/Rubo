@@ -24,9 +24,10 @@ public:
 
 
 private:
-    bool allow_coredown();
+    bool set_res_limit();
     bool basic_init();
 
+    static void signal_handder(int signal);
 public:
     bool init_system();
 

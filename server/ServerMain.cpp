@@ -7,6 +7,7 @@
 #include <server/server.hpp>
 #include <server/ServerMain.hpp>
 #include <sys/resource.h>
+#include <signal.h>
 #include "comm/Log.hpp"
 
 ServerMain::ServerMain()
@@ -20,29 +21,58 @@ ServerMain::~ServerMain()
 
 }
 
-bool ServerMain::allow_coredown()
+bool ServerMain::set_res_limit()
 {
-    struct rlimit core_limit;
-    core_limit.rlim_cur = RLIM_INFINITY;
-    core_limit.rlim_max = RLIM_INFINITY;
+    {
+        struct rlimit core_limit;
+        core_limit.rlim_cur = RLIM_INFINITY;
+        core_limit.rlim_max = RLIM_INFINITY;
 
-    return setrlimit(RLIMIT_CORE, &core_limit) == 0;
+        if(setrlimit(RLIMIT_CORE, &core_limit) != 0)
+        {
+            return false;
+        }
+    }
+
+
+    {
+        struct rlimit file_limit;
+        file_limit.rlim_cur = RLIM_INFINITY;
+        file_limit.rlim_max = RLIM_INFINITY;
+        if(setrlimit(RLIMIT_FSIZE, &file_limit) != 0)
+        {
+            return false;
+        }
+    }
+
+    return true;
 }
 
 bool ServerMain::basic_init()
 {
     srand((unsigned)time(NULL));
 
+    signal(SIGINT, ServerMain::signal_handder);
+    signal(SIGHUP, ServerMain::signal_handder);
+    signal(SIGQUIT, ServerMain::signal_handder);
+
     return true;
+}
+
+void ServerMain::signal_handder(int signal)
+{
+    Log("if you want to stop the server. please enter quit");
 }
 
 bool ServerMain::init_system()
 {
-    if(allow_coredown() == false)
+    if(set_res_limit() == false)
     {
-        LogError("allow_coredown error");
+        LogError("set system resource limit failed");
         return false;
     }
+
+
 
     basic_init();
 
