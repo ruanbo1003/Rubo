@@ -27,6 +27,10 @@ void reids_tests(const std::string& param);
 
 void template_test_entry();
 
+void json_tests();
+
+void time_tests();
+
 void test_entrys(const std::string& param)
 {
 //    thread_tests();
@@ -45,6 +49,10 @@ void test_entrys(const std::string& param)
 //    reids_tests();
 
 //    template_test_entry();
+
+//    json_tests();
+
+//    time_tests();
 }
 
 

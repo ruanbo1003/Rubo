@@ -35,6 +35,11 @@ public:
     bool init();
     void unit();
     void thread_loop();
+
+public:
+    virtual void on_next_second();
+    virtual void on_next_minute();
+    virtual void on_next_hour();
 };
 using GateMngrPtr = tr1::shared_ptr<GateMngr>;
 

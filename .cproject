@@ -98,7 +98,8 @@
 						</toolChain>
 					</folderInfo>
 					<sourceEntries>
-						<entry excluding="DB|protocols|msgs|Gate" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
+						<entry excluding="Includes|DB|protocols|msgs|Gate" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
+						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="Includes"/>
 						<entry excluding="protocols" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="msgs"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="msgs/protocols"/>
 					</sourceEntries>
@@ -167,7 +168,7 @@
 									<listOptionValue builtIn="false" value="crypto"/>
 									<listOptionValue builtIn="false" value="hiredis"/>
 								</option>
-								<option id="gnu.cpp.link.option.paths.1627836952" superClass="gnu.cpp.link.option.paths" valueType="libPaths">
+								<option id="gnu.cpp.link.option.paths.1627836952" name="Library search path (-L)" superClass="gnu.cpp.link.option.paths" valueType="libPaths">
 									<listOptionValue builtIn="false" value="/usr/local/protobuf/lib/"/>
 								</option>
 								<inputType id="cdt.managedbuild.tool.gnu.cpp.linker.input.96160544" superClass="cdt.managedbuild.tool.gnu.cpp.linker.input">
@@ -181,7 +182,8 @@
 						</toolChain>
 					</folderInfo>
 					<sourceEntries>
-						<entry excluding="server/Gate|DB|server/DB|protocols|msgs|server/gate|Gate" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
+						<entry excluding="Includes|server/Gate|DB|server/DB|protocols|msgs|server/gate|Gate" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
+						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="Includes"/>
 						<entry excluding="protocols" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="msgs"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="msgs/protocols"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="server/DB"/>

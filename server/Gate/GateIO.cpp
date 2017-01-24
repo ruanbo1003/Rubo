@@ -122,6 +122,7 @@ void GateIO::handler_unlogin_msgs()
             if(!msg_func)
             {
                 LogError("can not find func for msg id:%d", msg->_msg_id);
+                kick_out(user);
             }
             else
             {

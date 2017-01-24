@@ -11,7 +11,7 @@
 #include "comm/Noncopyable.hpp"
 #include <thread>
 #include <mutex>
-
+#include <chrono>
 
 class IThread : public NonCopyable
 {
@@ -20,6 +20,11 @@ private:
     bool _quit;
     bool _over;  // 是否已经退出了
     std::string _name;
+
+    //定时器变量
+    long int _last_ms;
+    long int _last_s;
+    std::tm _last_tm;
 
 public:
     IThread(const std::string& name="");
@@ -46,6 +51,14 @@ public:
     void set_tname(const string& name);
     string get_name()const;
     const char* get_cname()const;
+
+private:
+    void init_time();
+    void timer_events();
+public:
+    virtual void on_next_second();
+    virtual void on_next_minute();
+    virtual void on_next_hour();
 };
 
 using ThreadPtr = std::tr1::shared_ptr<IThread>;

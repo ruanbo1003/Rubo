@@ -55,6 +55,7 @@ bool ServerMain::basic_init()
     signal(SIGINT, ServerMain::signal_handder);
     signal(SIGHUP, ServerMain::signal_handder);
     signal(SIGQUIT, ServerMain::signal_handder);
+    signal(SIGPIPE, ServerMain::signal_handder);
 
     return true;
 }

@@ -22,7 +22,7 @@ int main(int argc, const char *argv[])
 
     test_entrys(param);
 
-    Log(" ==== end of main ==== ");
+    Log("\n ==== end of main ==== ");
     return 0;
 }
 

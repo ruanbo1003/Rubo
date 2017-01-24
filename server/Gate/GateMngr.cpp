@@ -63,6 +63,20 @@ void GateMngr::thread_loop()
 }
 
 
+void GateMngr::on_next_second()
+{
+    Log("GateMngr::on_next_second");
+}
+void GateMngr::on_next_minute()
+{
+    Log("GateMngr::on_next_minute");
+}
+
+void GateMngr::on_next_hour()
+{
+    Log("GateMngr::on_next_hour");
+}
+
 
 
 
