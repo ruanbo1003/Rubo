@@ -358,7 +358,6 @@ const int LoginReq::kPasswdFieldNumber;
 LoginReq::LoginReq()
   : ::google::protobuf::Message() {
   SharedCtor();
-  // @@protoc_insertion_point(constructor:LoginReq)
 }
 
 void LoginReq::InitAsDefaultInstance() {
@@ -368,27 +367,24 @@ LoginReq::LoginReq(const LoginReq& from)
   : ::google::protobuf::Message() {
   SharedCtor();
   MergeFrom(from);
-  // @@protoc_insertion_point(copy_constructor:LoginReq)
 }
 
 void LoginReq::SharedCtor() {
-  ::google::protobuf::internal::GetEmptyString();
   _cached_size_ = 0;
-  name_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  passwd_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  name_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  passwd_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
 LoginReq::~LoginReq() {
-  // @@protoc_insertion_point(destructor:LoginReq)
   SharedDtor();
 }
 
 void LoginReq::SharedDtor() {
-  if (name_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+  if (name_ != &::google::protobuf::internal::kEmptyString) {
     delete name_;
   }
-  if (passwd_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+  if (passwd_ != &::google::protobuf::internal::kEmptyString) {
     delete passwd_;
   }
   if (this != default_instance_) {
@@ -417,14 +413,14 @@ LoginReq* LoginReq::New() const {
 }
 
 void LoginReq::Clear() {
-  if (_has_bits_[0 / 32] & 3) {
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     if (has_name()) {
-      if (name_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+      if (name_ != &::google::protobuf::internal::kEmptyString) {
         name_->clear();
       }
     }
     if (has_passwd()) {
-      if (passwd_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+      if (passwd_ != &::google::protobuf::internal::kEmptyString) {
         passwd_->clear();
       }
     }
@@ -435,25 +431,21 @@ void LoginReq::Clear() {
 
 bool LoginReq::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!(EXPRESSION)) goto failure
+#define DO_(EXPRESSION) if (!(EXPRESSION)) return false
   ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:LoginReq)
-  for (;;) {
-    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
+  while ((tag = input->ReadTag()) != 0) {
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
       // required string name = 1;
       case 1: {
-        if (tag == 10) {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
                 input, this->mutable_name()));
-          ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+          ::google::protobuf::internal::WireFormat::VerifyUTF8String(
             this->name().data(), this->name().length(),
-            ::google::protobuf::internal::WireFormat::PARSE,
-            "name");
+            ::google::protobuf::internal::WireFormat::PARSE);
         } else {
-          goto handle_unusual;
+          goto handle_uninterpreted;
         }
         if (input->ExpectTag(18)) goto parse_passwd;
         break;
@@ -461,27 +453,26 @@ bool LoginReq::MergePartialFromCodedStream(
 
       // required string passwd = 2;
       case 2: {
-        if (tag == 18) {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
          parse_passwd:
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
                 input, this->mutable_passwd()));
-          ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+          ::google::protobuf::internal::WireFormat::VerifyUTF8String(
             this->passwd().data(), this->passwd().length(),
-            ::google::protobuf::internal::WireFormat::PARSE,
-            "passwd");
+            ::google::protobuf::internal::WireFormat::PARSE);
         } else {
-          goto handle_unusual;
+          goto handle_uninterpreted;
         }
-        if (input->ExpectAtEnd()) goto success;
+        if (input->ExpectAtEnd()) return true;
         break;
       }
 
       default: {
-      handle_unusual:
-        if (tag == 0 ||
-            ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+      handle_uninterpreted:
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
-          goto success;
+          return true;
         }
         DO_(::google::protobuf::internal::WireFormat::SkipField(
               input, tag, mutable_unknown_fields()));
@@ -489,35 +480,27 @@ bool LoginReq::MergePartialFromCodedStream(
       }
     }
   }
-success:
-  // @@protoc_insertion_point(parse_success:LoginReq)
   return true;
-failure:
-  // @@protoc_insertion_point(parse_failure:LoginReq)
-  return false;
 #undef DO_
 }
 
 void LoginReq::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:LoginReq)
   // required string name = 1;
   if (has_name()) {
-    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
       this->name().data(), this->name().length(),
-      ::google::protobuf::internal::WireFormat::SERIALIZE,
-      "name");
-    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    ::google::protobuf::internal::WireFormatLite::WriteString(
       1, this->name(), output);
   }
 
   // required string passwd = 2;
   if (has_passwd()) {
-    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
       this->passwd().data(), this->passwd().length(),
-      ::google::protobuf::internal::WireFormat::SERIALIZE,
-      "passwd");
-    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    ::google::protobuf::internal::WireFormatLite::WriteString(
       2, this->passwd(), output);
   }
 
@@ -525,18 +508,15 @@ void LoginReq::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
   }
-  // @@protoc_insertion_point(serialize_end:LoginReq)
 }
 
 ::google::protobuf::uint8* LoginReq::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // @@protoc_insertion_point(serialize_to_array_start:LoginReq)
   // required string name = 1;
   if (has_name()) {
-    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
       this->name().data(), this->name().length(),
-      ::google::protobuf::internal::WireFormat::SERIALIZE,
-      "name");
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
         1, this->name(), target);
@@ -544,10 +524,9 @@ void LoginReq::SerializeWithCachedSizes(
 
   // required string passwd = 2;
   if (has_passwd()) {
-    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
       this->passwd().data(), this->passwd().length(),
-      ::google::protobuf::internal::WireFormat::SERIALIZE,
-      "passwd");
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
         2, this->passwd(), target);
@@ -557,7 +536,6 @@ void LoginReq::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         unknown_fields(), target);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:LoginReq)
   return target;
 }
 
@@ -663,7 +641,6 @@ const int RegisterReq::kPasswdFieldNumber;
 RegisterReq::RegisterReq()
   : ::google::protobuf::Message() {
   SharedCtor();
-  // @@protoc_insertion_point(constructor:RegisterReq)
 }
 
 void RegisterReq::InitAsDefaultInstance() {
@@ -673,27 +650,24 @@ RegisterReq::RegisterReq(const RegisterReq& from)
   : ::google::protobuf::Message() {
   SharedCtor();
   MergeFrom(from);
-  // @@protoc_insertion_point(copy_constructor:RegisterReq)
 }
 
 void RegisterReq::SharedCtor() {
-  ::google::protobuf::internal::GetEmptyString();
   _cached_size_ = 0;
-  name_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  passwd_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  name_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  passwd_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
 RegisterReq::~RegisterReq() {
-  // @@protoc_insertion_point(destructor:RegisterReq)
   SharedDtor();
 }
 
 void RegisterReq::SharedDtor() {
-  if (name_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+  if (name_ != &::google::protobuf::internal::kEmptyString) {
     delete name_;
   }
-  if (passwd_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+  if (passwd_ != &::google::protobuf::internal::kEmptyString) {
     delete passwd_;
   }
   if (this != default_instance_) {
@@ -722,14 +696,14 @@ RegisterReq* RegisterReq::New() const {
 }
 
 void RegisterReq::Clear() {
-  if (_has_bits_[0 / 32] & 3) {
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     if (has_name()) {
-      if (name_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+      if (name_ != &::google::protobuf::internal::kEmptyString) {
         name_->clear();
       }
     }
     if (has_passwd()) {
-      if (passwd_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+      if (passwd_ != &::google::protobuf::internal::kEmptyString) {
         passwd_->clear();
       }
     }
@@ -740,25 +714,21 @@ void RegisterReq::Clear() {
 
 bool RegisterReq::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!(EXPRESSION)) goto failure
+#define DO_(EXPRESSION) if (!(EXPRESSION)) return false
   ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:RegisterReq)
-  for (;;) {
-    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
+  while ((tag = input->ReadTag()) != 0) {
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
       // required string name = 1;
       case 1: {
-        if (tag == 10) {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
                 input, this->mutable_name()));
-          ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+          ::google::protobuf::internal::WireFormat::VerifyUTF8String(
             this->name().data(), this->name().length(),
-            ::google::protobuf::internal::WireFormat::PARSE,
-            "name");
+            ::google::protobuf::internal::WireFormat::PARSE);
         } else {
-          goto handle_unusual;
+          goto handle_uninterpreted;
         }
         if (input->ExpectTag(18)) goto parse_passwd;
         break;
@@ -766,27 +736,26 @@ bool RegisterReq::MergePartialFromCodedStream(
 
       // required string passwd = 2;
       case 2: {
-        if (tag == 18) {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
          parse_passwd:
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
                 input, this->mutable_passwd()));
-          ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+          ::google::protobuf::internal::WireFormat::VerifyUTF8String(
             this->passwd().data(), this->passwd().length(),
-            ::google::protobuf::internal::WireFormat::PARSE,
-            "passwd");
+            ::google::protobuf::internal::WireFormat::PARSE);
         } else {
-          goto handle_unusual;
+          goto handle_uninterpreted;
         }
-        if (input->ExpectAtEnd()) goto success;
+        if (input->ExpectAtEnd()) return true;
         break;
       }
 
       default: {
-      handle_unusual:
-        if (tag == 0 ||
-            ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+      handle_uninterpreted:
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
-          goto success;
+          return true;
         }
         DO_(::google::protobuf::internal::WireFormat::SkipField(
               input, tag, mutable_unknown_fields()));
@@ -794,35 +763,27 @@ bool RegisterReq::MergePartialFromCodedStream(
       }
     }
   }
-success:
-  // @@protoc_insertion_point(parse_success:RegisterReq)
   return true;
-failure:
-  // @@protoc_insertion_point(parse_failure:RegisterReq)
-  return false;
 #undef DO_
 }
 
 void RegisterReq::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:RegisterReq)
   // required string name = 1;
   if (has_name()) {
-    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
       this->name().data(), this->name().length(),
-      ::google::protobuf::internal::WireFormat::SERIALIZE,
-      "name");
-    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    ::google::protobuf::internal::WireFormatLite::WriteString(
       1, this->name(), output);
   }
 
   // required string passwd = 2;
   if (has_passwd()) {
-    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
       this->passwd().data(), this->passwd().length(),
-      ::google::protobuf::internal::WireFormat::SERIALIZE,
-      "passwd");
-    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    ::google::protobuf::internal::WireFormatLite::WriteString(
       2, this->passwd(), output);
   }
 
@@ -830,18 +791,15 @@ void RegisterReq::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
   }
-  // @@protoc_insertion_point(serialize_end:RegisterReq)
 }
 
 ::google::protobuf::uint8* RegisterReq::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // @@protoc_insertion_point(serialize_to_array_start:RegisterReq)
   // required string name = 1;
   if (has_name()) {
-    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
       this->name().data(), this->name().length(),
-      ::google::protobuf::internal::WireFormat::SERIALIZE,
-      "name");
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
         1, this->name(), target);
@@ -849,10 +807,9 @@ void RegisterReq::SerializeWithCachedSizes(
 
   // required string passwd = 2;
   if (has_passwd()) {
-    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
       this->passwd().data(), this->passwd().length(),
-      ::google::protobuf::internal::WireFormat::SERIALIZE,
-      "passwd");
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
         2, this->passwd(), target);
@@ -862,7 +819,6 @@ void RegisterReq::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         unknown_fields(), target);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:RegisterReq)
   return target;
 }
 
@@ -967,7 +923,6 @@ const int VerifyReq::kMacaddrFieldNumber;
 VerifyReq::VerifyReq()
   : ::google::protobuf::Message() {
   SharedCtor();
-  // @@protoc_insertion_point(constructor:VerifyReq)
 }
 
 void VerifyReq::InitAsDefaultInstance() {
@@ -977,23 +932,20 @@ VerifyReq::VerifyReq(const VerifyReq& from)
   : ::google::protobuf::Message() {
   SharedCtor();
   MergeFrom(from);
-  // @@protoc_insertion_point(copy_constructor:VerifyReq)
 }
 
 void VerifyReq::SharedCtor() {
-  ::google::protobuf::internal::GetEmptyString();
   _cached_size_ = 0;
-  macaddr_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  macaddr_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
 VerifyReq::~VerifyReq() {
-  // @@protoc_insertion_point(destructor:VerifyReq)
   SharedDtor();
 }
 
 void VerifyReq::SharedDtor() {
-  if (macaddr_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+  if (macaddr_ != &::google::protobuf::internal::kEmptyString) {
     delete macaddr_;
   }
   if (this != default_instance_) {
@@ -1022,9 +974,11 @@ VerifyReq* VerifyReq::New() const {
 }
 
 void VerifyReq::Clear() {
-  if (has_macaddr()) {
-    if (macaddr_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-      macaddr_->clear();
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    if (has_macaddr()) {
+      if (macaddr_ != &::google::protobuf::internal::kEmptyString) {
+        macaddr_->clear();
+      }
     }
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
@@ -1033,36 +987,31 @@ void VerifyReq::Clear() {
 
 bool VerifyReq::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!(EXPRESSION)) goto failure
+#define DO_(EXPRESSION) if (!(EXPRESSION)) return false
   ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:VerifyReq)
-  for (;;) {
-    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
+  while ((tag = input->ReadTag()) != 0) {
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
       // required string macaddr = 1;
       case 1: {
-        if (tag == 10) {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
                 input, this->mutable_macaddr()));
-          ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+          ::google::protobuf::internal::WireFormat::VerifyUTF8String(
             this->macaddr().data(), this->macaddr().length(),
-            ::google::protobuf::internal::WireFormat::PARSE,
-            "macaddr");
+            ::google::protobuf::internal::WireFormat::PARSE);
         } else {
-          goto handle_unusual;
+          goto handle_uninterpreted;
         }
-        if (input->ExpectAtEnd()) goto success;
+        if (input->ExpectAtEnd()) return true;
         break;
       }
 
       default: {
-      handle_unusual:
-        if (tag == 0 ||
-            ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+      handle_uninterpreted:
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
-          goto success;
+          return true;
         }
         DO_(::google::protobuf::internal::WireFormat::SkipField(
               input, tag, mutable_unknown_fields()));
@@ -1070,25 +1019,18 @@ bool VerifyReq::MergePartialFromCodedStream(
       }
     }
   }
-success:
-  // @@protoc_insertion_point(parse_success:VerifyReq)
   return true;
-failure:
-  // @@protoc_insertion_point(parse_failure:VerifyReq)
-  return false;
 #undef DO_
 }
 
 void VerifyReq::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:VerifyReq)
   // required string macaddr = 1;
   if (has_macaddr()) {
-    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
       this->macaddr().data(), this->macaddr().length(),
-      ::google::protobuf::internal::WireFormat::SERIALIZE,
-      "macaddr");
-    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    ::google::protobuf::internal::WireFormatLite::WriteString(
       1, this->macaddr(), output);
   }
 
@@ -1096,18 +1038,15 @@ void VerifyReq::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
   }
-  // @@protoc_insertion_point(serialize_end:VerifyReq)
 }
 
 ::google::protobuf::uint8* VerifyReq::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // @@protoc_insertion_point(serialize_to_array_start:VerifyReq)
   // required string macaddr = 1;
   if (has_macaddr()) {
-    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
       this->macaddr().data(), this->macaddr().length(),
-      ::google::protobuf::internal::WireFormat::SERIALIZE,
-      "macaddr");
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
         1, this->macaddr(), target);
@@ -1117,7 +1056,6 @@ void VerifyReq::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         unknown_fields(), target);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:VerifyReq)
   return target;
 }
 
@@ -1212,7 +1150,6 @@ const int LoginRsp::kUserIdFieldNumber;
 LoginRsp::LoginRsp()
   : ::google::protobuf::Message() {
   SharedCtor();
-  // @@protoc_insertion_point(constructor:LoginRsp)
 }
 
 void LoginRsp::InitAsDefaultInstance() {
@@ -1222,7 +1159,6 @@ LoginRsp::LoginRsp(const LoginRsp& from)
   : ::google::protobuf::Message() {
   SharedCtor();
   MergeFrom(from);
-  // @@protoc_insertion_point(copy_constructor:LoginRsp)
 }
 
 void LoginRsp::SharedCtor() {
@@ -1233,7 +1169,6 @@ void LoginRsp::SharedCtor() {
 }
 
 LoginRsp::~LoginRsp() {
-  // @@protoc_insertion_point(destructor:LoginRsp)
   SharedDtor();
 }
 
@@ -1264,44 +1199,30 @@ LoginRsp* LoginRsp::New() const {
 }
 
 void LoginRsp::Clear() {
-#define OFFSET_OF_FIELD_(f) (reinterpret_cast<char*>(      \
-  &reinterpret_cast<LoginRsp*>(16)->f) - \
-   reinterpret_cast<char*>(16))
-
-#define ZR_(first, last) do {                              \
-    size_t f = OFFSET_OF_FIELD_(first);                    \
-    size_t n = OFFSET_OF_FIELD_(last) - f + sizeof(last);  \
-    ::memset(&first, 0, n);                                \
-  } while (0)
-
-  ZR_(isok_, userid_);
-
-#undef OFFSET_OF_FIELD_
-#undef ZR_
-
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    isok_ = false;
+    userid_ = 0;
+  }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
 }
 
 bool LoginRsp::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!(EXPRESSION)) goto failure
+#define DO_(EXPRESSION) if (!(EXPRESSION)) return false
   ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:LoginRsp)
-  for (;;) {
-    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
+  while ((tag = input->ReadTag()) != 0) {
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
       // required bool isOK = 1;
       case 1: {
-        if (tag == 8) {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
                  input, &isok_)));
           set_has_isok();
         } else {
-          goto handle_unusual;
+          goto handle_uninterpreted;
         }
         if (input->ExpectTag(16)) goto parse_userId;
         break;
@@ -1309,25 +1230,25 @@ bool LoginRsp::MergePartialFromCodedStream(
 
       // required int32 userId = 2;
       case 2: {
-        if (tag == 16) {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
          parse_userId:
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
                  input, &userid_)));
           set_has_userid();
         } else {
-          goto handle_unusual;
+          goto handle_uninterpreted;
         }
-        if (input->ExpectAtEnd()) goto success;
+        if (input->ExpectAtEnd()) return true;
         break;
       }
 
       default: {
-      handle_unusual:
-        if (tag == 0 ||
-            ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+      handle_uninterpreted:
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
-          goto success;
+          return true;
         }
         DO_(::google::protobuf::internal::WireFormat::SkipField(
               input, tag, mutable_unknown_fields()));
@@ -1335,18 +1256,12 @@ bool LoginRsp::MergePartialFromCodedStream(
       }
     }
   }
-success:
-  // @@protoc_insertion_point(parse_success:LoginRsp)
   return true;
-failure:
-  // @@protoc_insertion_point(parse_failure:LoginRsp)
-  return false;
 #undef DO_
 }
 
 void LoginRsp::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:LoginRsp)
   // required bool isOK = 1;
   if (has_isok()) {
     ::google::protobuf::internal::WireFormatLite::WriteBool(1, this->isok(), output);
@@ -1361,12 +1276,10 @@ void LoginRsp::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
   }
-  // @@protoc_insertion_point(serialize_end:LoginRsp)
 }
 
 ::google::protobuf::uint8* LoginRsp::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // @@protoc_insertion_point(serialize_to_array_start:LoginRsp)
   // required bool isOK = 1;
   if (has_isok()) {
     target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(1, this->isok(), target);
@@ -1381,7 +1294,6 @@ void LoginRsp::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         unknown_fields(), target);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:LoginRsp)
   return target;
 }
 
@@ -1484,7 +1396,6 @@ const int VerifyRsp::kIsOKFieldNumber;
 VerifyRsp::VerifyRsp()
   : ::google::protobuf::Message() {
   SharedCtor();
-  // @@protoc_insertion_point(constructor:VerifyRsp)
 }
 
 void VerifyRsp::InitAsDefaultInstance() {
@@ -1494,7 +1405,6 @@ VerifyRsp::VerifyRsp(const VerifyRsp& from)
   : ::google::protobuf::Message() {
   SharedCtor();
   MergeFrom(from);
-  // @@protoc_insertion_point(copy_constructor:VerifyRsp)
 }
 
 void VerifyRsp::SharedCtor() {
@@ -1504,7 +1414,6 @@ void VerifyRsp::SharedCtor() {
 }
 
 VerifyRsp::~VerifyRsp() {
-  // @@protoc_insertion_point(destructor:VerifyRsp)
   SharedDtor();
 }
 
@@ -1535,41 +1444,39 @@ VerifyRsp* VerifyRsp::New() const {
 }
 
 void VerifyRsp::Clear() {
-  isok_ = false;
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    isok_ = false;
+  }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
 }
 
 bool VerifyRsp::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!(EXPRESSION)) goto failure
+#define DO_(EXPRESSION) if (!(EXPRESSION)) return false
   ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:VerifyRsp)
-  for (;;) {
-    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
+  while ((tag = input->ReadTag()) != 0) {
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
       // required bool isOK = 1;
       case 1: {
-        if (tag == 8) {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
                  input, &isok_)));
           set_has_isok();
         } else {
-          goto handle_unusual;
+          goto handle_uninterpreted;
         }
-        if (input->ExpectAtEnd()) goto success;
+        if (input->ExpectAtEnd()) return true;
         break;
       }
 
       default: {
-      handle_unusual:
-        if (tag == 0 ||
-            ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+      handle_uninterpreted:
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
-          goto success;
+          return true;
         }
         DO_(::google::protobuf::internal::WireFormat::SkipField(
               input, tag, mutable_unknown_fields()));
@@ -1577,18 +1484,12 @@ bool VerifyRsp::MergePartialFromCodedStream(
       }
     }
   }
-success:
-  // @@protoc_insertion_point(parse_success:VerifyRsp)
   return true;
-failure:
-  // @@protoc_insertion_point(parse_failure:VerifyRsp)
-  return false;
 #undef DO_
 }
 
 void VerifyRsp::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:VerifyRsp)
   // required bool isOK = 1;
   if (has_isok()) {
     ::google::protobuf::internal::WireFormatLite::WriteBool(1, this->isok(), output);
@@ -1598,12 +1499,10 @@ void VerifyRsp::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
   }
-  // @@protoc_insertion_point(serialize_end:VerifyRsp)
 }
 
 ::google::protobuf::uint8* VerifyRsp::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // @@protoc_insertion_point(serialize_to_array_start:VerifyRsp)
   // required bool isOK = 1;
   if (has_isok()) {
     target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(1, this->isok(), target);
@@ -1613,7 +1512,6 @@ void VerifyRsp::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         unknown_fields(), target);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:VerifyRsp)
   return target;
 }
 
@@ -1707,7 +1605,6 @@ const int RegisterRsp::kAccidFieldNumber;
 RegisterRsp::RegisterRsp()
   : ::google::protobuf::Message() {
   SharedCtor();
-  // @@protoc_insertion_point(constructor:RegisterRsp)
 }
 
 void RegisterRsp::InitAsDefaultInstance() {
@@ -1717,25 +1614,22 @@ RegisterRsp::RegisterRsp(const RegisterRsp& from)
   : ::google::protobuf::Message() {
   SharedCtor();
   MergeFrom(from);
-  // @@protoc_insertion_point(copy_constructor:RegisterRsp)
 }
 
 void RegisterRsp::SharedCtor() {
-  ::google::protobuf::internal::GetEmptyString();
   _cached_size_ = 0;
   isok_ = false;
-  name_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  name_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
   accid_ = 0;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
 RegisterRsp::~RegisterRsp() {
-  // @@protoc_insertion_point(destructor:RegisterRsp)
   SharedDtor();
 }
 
 void RegisterRsp::SharedDtor() {
-  if (name_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+  if (name_ != &::google::protobuf::internal::kEmptyString) {
     delete name_;
   }
   if (this != default_instance_) {
@@ -1764,51 +1658,35 @@ RegisterRsp* RegisterRsp::New() const {
 }
 
 void RegisterRsp::Clear() {
-#define OFFSET_OF_FIELD_(f) (reinterpret_cast<char*>(      \
-  &reinterpret_cast<RegisterRsp*>(16)->f) - \
-   reinterpret_cast<char*>(16))
-
-#define ZR_(first, last) do {                              \
-    size_t f = OFFSET_OF_FIELD_(first);                    \
-    size_t n = OFFSET_OF_FIELD_(last) - f + sizeof(last);  \
-    ::memset(&first, 0, n);                                \
-  } while (0)
-
-  if (_has_bits_[0 / 32] & 7) {
-    ZR_(isok_, accid_);
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    isok_ = false;
     if (has_name()) {
-      if (name_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+      if (name_ != &::google::protobuf::internal::kEmptyString) {
         name_->clear();
       }
     }
+    accid_ = 0;
   }
-
-#undef OFFSET_OF_FIELD_
-#undef ZR_
-
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
 }
 
 bool RegisterRsp::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!(EXPRESSION)) goto failure
+#define DO_(EXPRESSION) if (!(EXPRESSION)) return false
   ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:RegisterRsp)
-  for (;;) {
-    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
+  while ((tag = input->ReadTag()) != 0) {
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
       // required bool isOK = 1;
       case 1: {
-        if (tag == 8) {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
                  input, &isok_)));
           set_has_isok();
         } else {
-          goto handle_unusual;
+          goto handle_uninterpreted;
         }
         if (input->ExpectTag(18)) goto parse_name;
         break;
@@ -1816,16 +1694,16 @@ bool RegisterRsp::MergePartialFromCodedStream(
 
       // required string name = 2;
       case 2: {
-        if (tag == 18) {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
          parse_name:
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
                 input, this->mutable_name()));
-          ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+          ::google::protobuf::internal::WireFormat::VerifyUTF8String(
             this->name().data(), this->name().length(),
-            ::google::protobuf::internal::WireFormat::PARSE,
-            "name");
+            ::google::protobuf::internal::WireFormat::PARSE);
         } else {
-          goto handle_unusual;
+          goto handle_uninterpreted;
         }
         if (input->ExpectTag(24)) goto parse_accid;
         break;
@@ -1833,25 +1711,25 @@ bool RegisterRsp::MergePartialFromCodedStream(
 
       // required int32 accid = 3;
       case 3: {
-        if (tag == 24) {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
          parse_accid:
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
                  input, &accid_)));
           set_has_accid();
         } else {
-          goto handle_unusual;
+          goto handle_uninterpreted;
         }
-        if (input->ExpectAtEnd()) goto success;
+        if (input->ExpectAtEnd()) return true;
         break;
       }
 
       default: {
-      handle_unusual:
-        if (tag == 0 ||
-            ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+      handle_uninterpreted:
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
-          goto success;
+          return true;
         }
         DO_(::google::protobuf::internal::WireFormat::SkipField(
               input, tag, mutable_unknown_fields()));
@@ -1859,18 +1737,12 @@ bool RegisterRsp::MergePartialFromCodedStream(
       }
     }
   }
-success:
-  // @@protoc_insertion_point(parse_success:RegisterRsp)
   return true;
-failure:
-  // @@protoc_insertion_point(parse_failure:RegisterRsp)
-  return false;
 #undef DO_
 }
 
 void RegisterRsp::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:RegisterRsp)
   // required bool isOK = 1;
   if (has_isok()) {
     ::google::protobuf::internal::WireFormatLite::WriteBool(1, this->isok(), output);
@@ -1878,11 +1750,10 @@ void RegisterRsp::SerializeWithCachedSizes(
 
   // required string name = 2;
   if (has_name()) {
-    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
       this->name().data(), this->name().length(),
-      ::google::protobuf::internal::WireFormat::SERIALIZE,
-      "name");
-    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    ::google::protobuf::internal::WireFormatLite::WriteString(
       2, this->name(), output);
   }
 
@@ -1895,12 +1766,10 @@ void RegisterRsp::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
   }
-  // @@protoc_insertion_point(serialize_end:RegisterRsp)
 }
 
 ::google::protobuf::uint8* RegisterRsp::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // @@protoc_insertion_point(serialize_to_array_start:RegisterRsp)
   // required bool isOK = 1;
   if (has_isok()) {
     target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(1, this->isok(), target);
@@ -1908,10 +1777,9 @@ void RegisterRsp::SerializeWithCachedSizes(
 
   // required string name = 2;
   if (has_name()) {
-    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
       this->name().data(), this->name().length(),
-      ::google::protobuf::internal::WireFormat::SERIALIZE,
-      "name");
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
         2, this->name(), target);
@@ -1926,7 +1794,6 @@ void RegisterRsp::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         unknown_fields(), target);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:RegisterRsp)
   return target;
 }
 
@@ -2040,7 +1907,6 @@ const int UserOnlineReq::kUidFieldNumber;
 UserOnlineReq::UserOnlineReq()
   : ::google::protobuf::Message() {
   SharedCtor();
-  // @@protoc_insertion_point(constructor:UserOnlineReq)
 }
 
 void UserOnlineReq::InitAsDefaultInstance() {
@@ -2050,7 +1916,6 @@ UserOnlineReq::UserOnlineReq(const UserOnlineReq& from)
   : ::google::protobuf::Message() {
   SharedCtor();
   MergeFrom(from);
-  // @@protoc_insertion_point(copy_constructor:UserOnlineReq)
 }
 
 void UserOnlineReq::SharedCtor() {
@@ -2060,7 +1925,6 @@ void UserOnlineReq::SharedCtor() {
 }
 
 UserOnlineReq::~UserOnlineReq() {
-  // @@protoc_insertion_point(destructor:UserOnlineReq)
   SharedDtor();
 }
 
@@ -2091,41 +1955,39 @@ UserOnlineReq* UserOnlineReq::New() const {
 }
 
 void UserOnlineReq::Clear() {
-  uid_ = 0;
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    uid_ = 0;
+  }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
 }
 
 bool UserOnlineReq::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!(EXPRESSION)) goto failure
+#define DO_(EXPRESSION) if (!(EXPRESSION)) return false
   ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:UserOnlineReq)
-  for (;;) {
-    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
+  while ((tag = input->ReadTag()) != 0) {
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
       // required int32 uid = 1;
       case 1: {
-        if (tag == 8) {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
                  input, &uid_)));
           set_has_uid();
         } else {
-          goto handle_unusual;
+          goto handle_uninterpreted;
         }
-        if (input->ExpectAtEnd()) goto success;
+        if (input->ExpectAtEnd()) return true;
         break;
       }
 
       default: {
-      handle_unusual:
-        if (tag == 0 ||
-            ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+      handle_uninterpreted:
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
-          goto success;
+          return true;
         }
         DO_(::google::protobuf::internal::WireFormat::SkipField(
               input, tag, mutable_unknown_fields()));
@@ -2133,18 +1995,12 @@ bool UserOnlineReq::MergePartialFromCodedStream(
       }
     }
   }
-success:
-  // @@protoc_insertion_point(parse_success:UserOnlineReq)
   return true;
-failure:
-  // @@protoc_insertion_point(parse_failure:UserOnlineReq)
-  return false;
 #undef DO_
 }
 
 void UserOnlineReq::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:UserOnlineReq)
   // required int32 uid = 1;
   if (has_uid()) {
     ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->uid(), output);
@@ -2154,12 +2010,10 @@ void UserOnlineReq::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
   }
-  // @@protoc_insertion_point(serialize_end:UserOnlineReq)
 }
 
 ::google::protobuf::uint8* UserOnlineReq::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // @@protoc_insertion_point(serialize_to_array_start:UserOnlineReq)
   // required int32 uid = 1;
   if (has_uid()) {
     target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(1, this->uid(), target);
@@ -2169,7 +2023,6 @@ void UserOnlineReq::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         unknown_fields(), target);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:UserOnlineReq)
   return target;
 }
 
@@ -2263,7 +2116,6 @@ const int UserOfflineReq::kUidFieldNumber;
 UserOfflineReq::UserOfflineReq()
   : ::google::protobuf::Message() {
   SharedCtor();
-  // @@protoc_insertion_point(constructor:UserOfflineReq)
 }
 
 void UserOfflineReq::InitAsDefaultInstance() {
@@ -2273,7 +2125,6 @@ UserOfflineReq::UserOfflineReq(const UserOfflineReq& from)
   : ::google::protobuf::Message() {
   SharedCtor();
   MergeFrom(from);
-  // @@protoc_insertion_point(copy_constructor:UserOfflineReq)
 }
 
 void UserOfflineReq::SharedCtor() {
@@ -2283,7 +2134,6 @@ void UserOfflineReq::SharedCtor() {
 }
 
 UserOfflineReq::~UserOfflineReq() {
-  // @@protoc_insertion_point(destructor:UserOfflineReq)
   SharedDtor();
 }
 
@@ -2314,41 +2164,39 @@ UserOfflineReq* UserOfflineReq::New() const {
 }
 
 void UserOfflineReq::Clear() {
-  uid_ = 0;
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    uid_ = 0;
+  }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
 }
 
 bool UserOfflineReq::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!(EXPRESSION)) goto failure
+#define DO_(EXPRESSION) if (!(EXPRESSION)) return false
   ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:UserOfflineReq)
-  for (;;) {
-    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
+  while ((tag = input->ReadTag()) != 0) {
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
       // required int32 uid = 1;
       case 1: {
-        if (tag == 8) {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
                  input, &uid_)));
           set_has_uid();
         } else {
-          goto handle_unusual;
+          goto handle_uninterpreted;
         }
-        if (input->ExpectAtEnd()) goto success;
+        if (input->ExpectAtEnd()) return true;
         break;
       }
 
       default: {
-      handle_unusual:
-        if (tag == 0 ||
-            ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+      handle_uninterpreted:
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
-          goto success;
+          return true;
         }
         DO_(::google::protobuf::internal::WireFormat::SkipField(
               input, tag, mutable_unknown_fields()));
@@ -2356,18 +2204,12 @@ bool UserOfflineReq::MergePartialFromCodedStream(
       }
     }
   }
-success:
-  // @@protoc_insertion_point(parse_success:UserOfflineReq)
   return true;
-failure:
-  // @@protoc_insertion_point(parse_failure:UserOfflineReq)
-  return false;
 #undef DO_
 }
 
 void UserOfflineReq::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:UserOfflineReq)
   // required int32 uid = 1;
   if (has_uid()) {
     ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->uid(), output);
@@ -2377,12 +2219,10 @@ void UserOfflineReq::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
   }
-  // @@protoc_insertion_point(serialize_end:UserOfflineReq)
 }
 
 ::google::protobuf::uint8* UserOfflineReq::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // @@protoc_insertion_point(serialize_to_array_start:UserOfflineReq)
   // required int32 uid = 1;
   if (has_uid()) {
     target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(1, this->uid(), target);
@@ -2392,7 +2232,6 @@ void UserOfflineReq::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         unknown_fields(), target);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:UserOfflineReq)
   return target;
 }
 
@@ -2486,7 +2325,6 @@ const int KickUserOutReq::kUidFieldNumber;
 KickUserOutReq::KickUserOutReq()
   : ::google::protobuf::Message() {
   SharedCtor();
-  // @@protoc_insertion_point(constructor:KickUserOutReq)
 }
 
 void KickUserOutReq::InitAsDefaultInstance() {
@@ -2496,7 +2334,6 @@ KickUserOutReq::KickUserOutReq(const KickUserOutReq& from)
   : ::google::protobuf::Message() {
   SharedCtor();
   MergeFrom(from);
-  // @@protoc_insertion_point(copy_constructor:KickUserOutReq)
 }
 
 void KickUserOutReq::SharedCtor() {
@@ -2506,7 +2343,6 @@ void KickUserOutReq::SharedCtor() {
 }
 
 KickUserOutReq::~KickUserOutReq() {
-  // @@protoc_insertion_point(destructor:KickUserOutReq)
   SharedDtor();
 }
 
@@ -2537,41 +2373,39 @@ KickUserOutReq* KickUserOutReq::New() const {
 }
 
 void KickUserOutReq::Clear() {
-  uid_ = 0;
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    uid_ = 0;
+  }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
 }
 
 bool KickUserOutReq::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!(EXPRESSION)) goto failure
+#define DO_(EXPRESSION) if (!(EXPRESSION)) return false
   ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:KickUserOutReq)
-  for (;;) {
-    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
+  while ((tag = input->ReadTag()) != 0) {
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
       // required int32 uid = 1;
       case 1: {
-        if (tag == 8) {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
                  input, &uid_)));
           set_has_uid();
         } else {
-          goto handle_unusual;
+          goto handle_uninterpreted;
         }
-        if (input->ExpectAtEnd()) goto success;
+        if (input->ExpectAtEnd()) return true;
         break;
       }
 
       default: {
-      handle_unusual:
-        if (tag == 0 ||
-            ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+      handle_uninterpreted:
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
-          goto success;
+          return true;
         }
         DO_(::google::protobuf::internal::WireFormat::SkipField(
               input, tag, mutable_unknown_fields()));
@@ -2579,18 +2413,12 @@ bool KickUserOutReq::MergePartialFromCodedStream(
       }
     }
   }
-success:
-  // @@protoc_insertion_point(parse_success:KickUserOutReq)
   return true;
-failure:
-  // @@protoc_insertion_point(parse_failure:KickUserOutReq)
-  return false;
 #undef DO_
 }
 
 void KickUserOutReq::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:KickUserOutReq)
   // required int32 uid = 1;
   if (has_uid()) {
     ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->uid(), output);
@@ -2600,12 +2428,10 @@ void KickUserOutReq::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
   }
-  // @@protoc_insertion_point(serialize_end:KickUserOutReq)
 }
 
 ::google::protobuf::uint8* KickUserOutReq::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // @@protoc_insertion_point(serialize_to_array_start:KickUserOutReq)
   // required int32 uid = 1;
   if (has_uid()) {
     target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(1, this->uid(), target);
@@ -2615,7 +2441,6 @@ void KickUserOutReq::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         unknown_fields(), target);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:KickUserOutReq)
   return target;
 }
 
@@ -2710,7 +2535,6 @@ const int DoSthReq::kSthFieldNumber;
 DoSthReq::DoSthReq()
   : ::google::protobuf::Message() {
   SharedCtor();
-  // @@protoc_insertion_point(constructor:DoSthReq)
 }
 
 void DoSthReq::InitAsDefaultInstance() {
@@ -2720,24 +2544,21 @@ DoSthReq::DoSthReq(const DoSthReq& from)
   : ::google::protobuf::Message() {
   SharedCtor();
   MergeFrom(from);
-  // @@protoc_insertion_point(copy_constructor:DoSthReq)
 }
 
 void DoSthReq::SharedCtor() {
-  ::google::protobuf::internal::GetEmptyString();
   _cached_size_ = 0;
   uid_ = 0;
-  sth_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  sth_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
 DoSthReq::~DoSthReq() {
-  // @@protoc_insertion_point(destructor:DoSthReq)
   SharedDtor();
 }
 
 void DoSthReq::SharedDtor() {
-  if (sth_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+  if (sth_ != &::google::protobuf::internal::kEmptyString) {
     delete sth_;
   }
   if (this != default_instance_) {
@@ -2766,10 +2587,10 @@ DoSthReq* DoSthReq::New() const {
 }
 
 void DoSthReq::Clear() {
-  if (_has_bits_[0 / 32] & 3) {
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     uid_ = 0;
     if (has_sth()) {
-      if (sth_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+      if (sth_ != &::google::protobuf::internal::kEmptyString) {
         sth_->clear();
       }
     }
@@ -2780,23 +2601,20 @@ void DoSthReq::Clear() {
 
 bool DoSthReq::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!(EXPRESSION)) goto failure
+#define DO_(EXPRESSION) if (!(EXPRESSION)) return false
   ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:DoSthReq)
-  for (;;) {
-    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
+  while ((tag = input->ReadTag()) != 0) {
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
       // required int32 uid = 1;
       case 1: {
-        if (tag == 8) {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
                  input, &uid_)));
           set_has_uid();
         } else {
-          goto handle_unusual;
+          goto handle_uninterpreted;
         }
         if (input->ExpectTag(18)) goto parse_sth;
         break;
@@ -2804,27 +2622,26 @@ bool DoSthReq::MergePartialFromCodedStream(
 
       // required string sth = 2;
       case 2: {
-        if (tag == 18) {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
          parse_sth:
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
                 input, this->mutable_sth()));
-          ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+          ::google::protobuf::internal::WireFormat::VerifyUTF8String(
             this->sth().data(), this->sth().length(),
-            ::google::protobuf::internal::WireFormat::PARSE,
-            "sth");
+            ::google::protobuf::internal::WireFormat::PARSE);
         } else {
-          goto handle_unusual;
+          goto handle_uninterpreted;
         }
-        if (input->ExpectAtEnd()) goto success;
+        if (input->ExpectAtEnd()) return true;
         break;
       }
 
       default: {
-      handle_unusual:
-        if (tag == 0 ||
-            ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+      handle_uninterpreted:
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
-          goto success;
+          return true;
         }
         DO_(::google::protobuf::internal::WireFormat::SkipField(
               input, tag, mutable_unknown_fields()));
@@ -2832,18 +2649,12 @@ bool DoSthReq::MergePartialFromCodedStream(
       }
     }
   }
-success:
-  // @@protoc_insertion_point(parse_success:DoSthReq)
   return true;
-failure:
-  // @@protoc_insertion_point(parse_failure:DoSthReq)
-  return false;
 #undef DO_
 }
 
 void DoSthReq::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:DoSthReq)
   // required int32 uid = 1;
   if (has_uid()) {
     ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->uid(), output);
@@ -2851,11 +2662,10 @@ void DoSthReq::SerializeWithCachedSizes(
 
   // required string sth = 2;
   if (has_sth()) {
-    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
       this->sth().data(), this->sth().length(),
-      ::google::protobuf::internal::WireFormat::SERIALIZE,
-      "sth");
-    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    ::google::protobuf::internal::WireFormatLite::WriteString(
       2, this->sth(), output);
   }
 
@@ -2863,12 +2673,10 @@ void DoSthReq::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
   }
-  // @@protoc_insertion_point(serialize_end:DoSthReq)
 }
 
 ::google::protobuf::uint8* DoSthReq::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // @@protoc_insertion_point(serialize_to_array_start:DoSthReq)
   // required int32 uid = 1;
   if (has_uid()) {
     target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(1, this->uid(), target);
@@ -2876,10 +2684,9 @@ void DoSthReq::SerializeWithCachedSizes(
 
   // required string sth = 2;
   if (has_sth()) {
-    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
       this->sth().data(), this->sth().length(),
-      ::google::protobuf::internal::WireFormat::SERIALIZE,
-      "sth");
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
         2, this->sth(), target);
@@ -2889,7 +2696,6 @@ void DoSthReq::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         unknown_fields(), target);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:DoSthReq)
   return target;
 }
 
@@ -2995,7 +2801,6 @@ const int DoSthRsp::kRetFieldNumber;
 DoSthRsp::DoSthRsp()
   : ::google::protobuf::Message() {
   SharedCtor();
-  // @@protoc_insertion_point(constructor:DoSthRsp)
 }
 
 void DoSthRsp::InitAsDefaultInstance() {
@@ -3005,24 +2810,21 @@ DoSthRsp::DoSthRsp(const DoSthRsp& from)
   : ::google::protobuf::Message() {
   SharedCtor();
   MergeFrom(from);
-  // @@protoc_insertion_point(copy_constructor:DoSthRsp)
 }
 
 void DoSthRsp::SharedCtor() {
-  ::google::protobuf::internal::GetEmptyString();
   _cached_size_ = 0;
   rspid_ = 0;
-  ret_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  ret_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
 DoSthRsp::~DoSthRsp() {
-  // @@protoc_insertion_point(destructor:DoSthRsp)
   SharedDtor();
 }
 
 void DoSthRsp::SharedDtor() {
-  if (ret_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+  if (ret_ != &::google::protobuf::internal::kEmptyString) {
     delete ret_;
   }
   if (this != default_instance_) {
@@ -3051,10 +2853,10 @@ DoSthRsp* DoSthRsp::New() const {
 }
 
 void DoSthRsp::Clear() {
-  if (_has_bits_[0 / 32] & 3) {
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     rspid_ = 0;
     if (has_ret()) {
-      if (ret_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+      if (ret_ != &::google::protobuf::internal::kEmptyString) {
         ret_->clear();
       }
     }
@@ -3065,23 +2867,20 @@ void DoSthRsp::Clear() {
 
 bool DoSthRsp::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!(EXPRESSION)) goto failure
+#define DO_(EXPRESSION) if (!(EXPRESSION)) return false
   ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:DoSthRsp)
-  for (;;) {
-    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
+  while ((tag = input->ReadTag()) != 0) {
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
       // required int32 rspID = 1;
       case 1: {
-        if (tag == 8) {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
                  input, &rspid_)));
           set_has_rspid();
         } else {
-          goto handle_unusual;
+          goto handle_uninterpreted;
         }
         if (input->ExpectTag(18)) goto parse_ret;
         break;
@@ -3089,27 +2888,26 @@ bool DoSthRsp::MergePartialFromCodedStream(
 
       // required string ret = 2;
       case 2: {
-        if (tag == 18) {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
          parse_ret:
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
                 input, this->mutable_ret()));
-          ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+          ::google::protobuf::internal::WireFormat::VerifyUTF8String(
             this->ret().data(), this->ret().length(),
-            ::google::protobuf::internal::WireFormat::PARSE,
-            "ret");
+            ::google::protobuf::internal::WireFormat::PARSE);
         } else {
-          goto handle_unusual;
+          goto handle_uninterpreted;
         }
-        if (input->ExpectAtEnd()) goto success;
+        if (input->ExpectAtEnd()) return true;
         break;
       }
 
       default: {
-      handle_unusual:
-        if (tag == 0 ||
-            ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+      handle_uninterpreted:
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
-          goto success;
+          return true;
         }
         DO_(::google::protobuf::internal::WireFormat::SkipField(
               input, tag, mutable_unknown_fields()));
@@ -3117,18 +2915,12 @@ bool DoSthRsp::MergePartialFromCodedStream(
       }
     }
   }
-success:
-  // @@protoc_insertion_point(parse_success:DoSthRsp)
   return true;
-failure:
-  // @@protoc_insertion_point(parse_failure:DoSthRsp)
-  return false;
 #undef DO_
 }
 
 void DoSthRsp::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:DoSthRsp)
   // required int32 rspID = 1;
   if (has_rspid()) {
     ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->rspid(), output);
@@ -3136,11 +2928,10 @@ void DoSthRsp::SerializeWithCachedSizes(
 
   // required string ret = 2;
   if (has_ret()) {
-    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
       this->ret().data(), this->ret().length(),
-      ::google::protobuf::internal::WireFormat::SERIALIZE,
-      "ret");
-    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    ::google::protobuf::internal::WireFormatLite::WriteString(
       2, this->ret(), output);
   }
 
@@ -3148,12 +2939,10 @@ void DoSthRsp::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
   }
-  // @@protoc_insertion_point(serialize_end:DoSthRsp)
 }
 
 ::google::protobuf::uint8* DoSthRsp::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // @@protoc_insertion_point(serialize_to_array_start:DoSthRsp)
   // required int32 rspID = 1;
   if (has_rspid()) {
     target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(1, this->rspid(), target);
@@ -3161,10 +2950,9 @@ void DoSthRsp::SerializeWithCachedSizes(
 
   // required string ret = 2;
   if (has_ret()) {
-    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
       this->ret().data(), this->ret().length(),
-      ::google::protobuf::internal::WireFormat::SERIALIZE,
-      "ret");
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
         2, this->ret(), target);
@@ -3174,7 +2962,6 @@ void DoSthRsp::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         unknown_fields(), target);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:DoSthRsp)
   return target;
 }
 
